@@ -1,0 +1,47 @@
+// you can also use imports, for example:
+ import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    
+      public static Character o1 = new Character('{');
+    public static Character o2 = new Character('[');
+    public static Character o3 = new Character('(');
+
+    public static Character c1 = new Character('}');
+    public static Character c2 = new Character(']');
+    public static Character c3 = new Character(')');
+
+    public static boolean isPair(char char1, char char2) {
+        if (char1 == o1 && char2 == c1) {
+            return true;
+        }
+        if (char1 == o2 && char2 == c2) {
+            return true;
+        }
+        if (char1 == o3 && char2 == c3) {
+            return true;
+        }
+        return false;
+    }
+
+    public static int solution(String S) {
+        Stack<Character> stack = new Stack<>();
+
+        char[] arr = S.toCharArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (stack.isEmpty()) {
+                stack.push(arr[i]);
+            } else if (isPair(stack.peek(), arr[i])) {
+                stack.pop();
+            } else {
+                stack.push(arr[i]);
+            }
+        }
+
+        return stack.isEmpty() ? 1 : 0;
+    }
+}
