@@ -21,6 +21,9 @@ class Solution {
     }
 
    public boolean isTriangular(int p, int q, int r ){
+     if(p==q && p==r && q==r){
+         return false;
+     }
        if(p+q>r && q+r>p && r+p>q){
            return true;
        }
